@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+### Added
+* Support for advanced providers
+
 ## [1.1.2] - 2018-01-09
 ### Changed
 * Use error.code if available
