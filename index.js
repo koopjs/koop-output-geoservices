@@ -12,6 +12,26 @@ Geoservices.prototype.featureServer = function (req, res) {
 
 Geoservices.routes = [
   {
+    path: 'rest/services/$provider$/FeatureServer/:layer/:method',
+    methods: ['get', 'post'],
+    handler: 'featureServer'
+  },
+  {
+    path: 'rest/services/$provider$/FeatureServer/layers',
+    methods: ['get', 'post'],
+    handler: 'featureServer'
+  },
+  {
+    path: 'rest/services/$provider$/FeatureServer/:layer',
+    methods: ['get', 'post'],
+    handler: 'featureServer'
+  },
+  {
+    path: 'rest/services/$provider$/FeatureServer',
+    methods: ['get', 'post'],
+    handler: 'featureServer'
+  },
+  {
     path: 'FeatureServer/:layer/:method',
     methods: ['get', 'post'],
     handler: 'featureServer'
