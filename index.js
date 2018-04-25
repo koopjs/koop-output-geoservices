@@ -16,28 +16,27 @@ Geoservices.prototype.featureServerRestInfo = function (req, res) {
 
 Geoservices.routes = [
   {
-    path: 'rest/info',
+    path: '$namespace/rest/info',
     methods: ['get', 'post'],
-    handler: 'featureServerRestInfo',
-    skipDecoration: true
+    handler: 'featureServerRestInfo'
   },
   {
-    path: 'rest/services/$provider$/FeatureServer/:layer/:method',
-    methods: ['get', 'post'],
-    handler: 'featureServer'
-  },
-  {
-    path: 'rest/services/$provider$/FeatureServer/layers',
+    path: '$namespace/rest/services/$providerParams/FeatureServer/:layer/:method',
     methods: ['get', 'post'],
     handler: 'featureServer'
   },
   {
-    path: 'rest/services/$provider$/FeatureServer/:layer',
+    path: '$namespace/rest/services/$providerParams/FeatureServer/layers',
     methods: ['get', 'post'],
     handler: 'featureServer'
   },
   {
-    path: 'rest/services/$provider$/FeatureServer',
+    path: '$namespace/rest/services/$providerParams/FeatureServer/:layer',
+    methods: ['get', 'post'],
+    handler: 'featureServer'
+  },
+  {
+    path: '$namespace/rest/services/$providerParams/FeatureServer',
     methods: ['get', 'post'],
     handler: 'featureServer'
   },
