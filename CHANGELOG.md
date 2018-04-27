@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Duplicate FeatureServer routes with `rest/services` included between $namespace and $providerParams placeholders. Placeholder get replaced by provider-specific data registration when paired with koop-core ^3.6.0
 * New route `$namespace/rest/info`, for provider-specific information server info
 
+## [1.1.2] - 2018-01-09
 ### Changed
 * Use error.code if available
 
@@ -24,5 +25,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.0] - 2017-01-25
 * Initial Release
 
+[1.1.2]: https://github.com/koopjs/koop-featureserver-plugin/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/koopjs/koop-featureserver-plugin/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/koopjs/koop-featureserver-plugin/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/koopjs/koop-featureserver-plugin/releases/tag/v1.0.0
