@@ -1,4 +1,4 @@
-var FeatureServer = require('featureserver')
+var FeatureServer = require('../FeatureServer/src')
 
 function Geoservices () {}
 
@@ -11,7 +11,8 @@ Geoservices.prototype.featureServer = function (req, res) {
 }
 
 Geoservices.prototype.featureServerRestInfo = function (req, res) {
-  FeatureServer.route(req, res)
+  let authInfo = this.generateAuthInfo || function() { return {} }
+  FeatureServer.route(req, res, authInfo(req))
 }
 
 /**
