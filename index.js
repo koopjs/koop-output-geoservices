@@ -10,9 +10,16 @@ Geoservices.prototype.featureServer = function (req, res) {
   })
 }
 
+/**
+ * Handler for the $namepace/rest/info route. Inspects provider for authentation info and passes any on to the 
+ * FeatureServer handler
+ * @param {*} req 
+ * @param {*} res 
+ */
 Geoservices.prototype.featureServerRestInfo = function (req, res) {
-  let authInfo = this.generateAuthInfo || function() { return {} }
-  FeatureServer.route(req, res, authInfo(req))
+  // Inspect provider for an "authInfo" controller; if undefined create a dummy function that returns an empty object
+  let authInfo = this.authInfo || function() { return {} }
+  FeatureServer.route(req, res, authInfo(`${req.protocol}://${req.headers.host}`))
 }
 
 /**
