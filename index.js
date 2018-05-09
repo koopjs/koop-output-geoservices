@@ -30,18 +30,13 @@ Geoservices.prototype.featureServerRestInfo = function (req, res) {
  * in the collection with and without the "$namespace/rest/services/$providerParams" prefix.
  * These prefixed routes have been added due to some clients requiring the "rest/services"
  * URL fragment in geoservices routes. The $namespace and $providerParams are placeholders
- * that koop-core replaces with provider-specific settings. The 'host' and 'disableIdParam'
- * properties of a route object will override the properties of the provider - thus, in the
- * example below '$namespace/rest/info' is not transformed into '$namespace/:host/:id/rest/info
- * if a provider's 'host' property is true.
+ * that koop-core replaces with provider-specific settings.
  */
 Geoservices.routes = [
   {
     path: '$namespace/rest/info',
     methods: ['get', 'post'],
-    handler: 'featureServerRestInfo',
-    hosts: false,
-    disableIdParam: true
+    handler: 'featureServerRestInfo'
   },
   {
     path: '$namespace/rest/services/$providerParams/FeatureServer/:layer/:method',

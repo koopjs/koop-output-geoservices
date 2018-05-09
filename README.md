@@ -27,9 +27,7 @@ koop.server.listen(80)
   {
     path: '$namespace/rest/info',
     methods: ['get', 'post'],
-    handler: 'featureServerRestInfo',
-    hosts: false,
-    disableIdParam: true
+    handler: 'featureServerRestInfo'
   },
   {
     path: '$namespace/rest/services/$providerParams/FeatureServer/:layer/:method',
