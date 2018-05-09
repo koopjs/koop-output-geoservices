@@ -2,7 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unrelease
+## Unreleased
+###Added
+* Call model function `authInfo` (if exists) in the `rest/info` handler and pass returned object onto FeatureServer
+
 ### Fixed
 * Route intended to be `$namespace/rest/info` was being generated as `$namespace/:host/:id/rest/info`.  Added additional parameters to route object (`hosts` and `disableIdParams`) that allow koop-core to override provider settings to prevent unwanted parameter addition.
 
