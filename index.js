@@ -1,4 +1,4 @@
-var FeatureServer = require('../FeatureServer/src')
+var FeatureServer = require('featureserver')
 
 function Geoservices () {}
 
@@ -11,14 +11,14 @@ Geoservices.prototype.featureServer = function (req, res) {
 }
 
 /**
- * Handler for the $namepace/rest/info route. Inspects provider for authentation info and passes any on to the 
+ * Handler for the $namepace/rest/info route. Inspects provider for authentation info and passes any on to the
  * FeatureServer handler
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 Geoservices.prototype.featureServerRestInfo = function (req, res) {
   // Inspect provider for an "authInfo" controller; if undefined create a dummy function that returns an empty object
-  let authInfo = this.authInfo || function() { return {} }
+  let authInfo = this.authInfo || function () { return {} }
   FeatureServer.route(req, res, authInfo(`${req.protocol}://${req.headers.host}`))
 }
 
