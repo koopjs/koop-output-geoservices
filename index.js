@@ -17,9 +17,15 @@ Geoservices.prototype.featureServer = function (req, res) {
  * @param {*} res
  */
 Geoservices.prototype.featureServerRestInfo = function (req, res) {
-  // Inspect model for an "serviceAuthenticationSpecification" function; if undefined create a dummy function that returns an empty object
-  let authSpecs = this.model.serviceAuthenticationSpecification || function () { return {} }
-  FeatureServer.route(req, res, authSpecs(`${req.protocol}://${req.headers.host}`))
+  let authInfo = {}
+  // Inspect model for an "authenticationSpecification" function; if undefined create a dummy function that returns an empty object
+  let getAuthSpec = this.model.authenticationSpecification || function () { return {} }
+  let authSpec = getAuthSpec()
+  if (authSpec.secured) {
+    authInfo.isTokenBasedSecurity = true
+    authInfo.tokenServicesUrl = `${req.protocol}://${req.headers.host}/${authSpec.provider}/generateToken`
+  }
+  FeatureServer.route(req, res, { authInfo })
 }
 
 /**
@@ -27,7 +33,7 @@ Geoservices.prototype.featureServerRestInfo = function (req, res) {
  * @param {*} req
  * @param {*} res
  */
-Geoservices.prototype.authenticate = function (req, res) {
+Geoservices.prototype.generateToken = function (req, res) {
   this.model.authenticate(req, res)
 }
 
@@ -48,9 +54,9 @@ Geoservices.routes = [
     handler: 'featureServerRestInfo'
   },
   {
-    path: '$namespace/authenticate',
+    path: '$namespace/generateToken',
     methods: ['get', 'post'],
-    handler: 'authenticate'
+    handler: 'generateToken'
   },
   {
     path: '$namespace/rest/services/$providerParams/FeatureServer/:layer/:method',
