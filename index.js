@@ -23,7 +23,7 @@ Geoservices.prototype.featureServerRestInfo = function (req, res) {
   let authSpec = getAuthSpec()
   if (authSpec.secured) {
     authInfo.isTokenBasedSecurity = true
-    authInfo.tokenServicesUrl = `${req.protocol}://${req.headers.host}/${authSpec.provider}/generateToken`
+    authInfo.tokenServicesUrl = `${req.protocol}://${req.headers.host}/${authSpec.provider}/rest/generateToken`
   }
   FeatureServer.route(req, res, { authInfo })
 }
@@ -54,7 +54,7 @@ Geoservices.routes = [
     handler: 'featureServerRestInfo'
   },
   {
-    path: '$namespace/generateToken',
+    path: '$namespace/rest/generateToken',
     methods: ['get', 'post'],
     handler: 'generateToken'
   },
