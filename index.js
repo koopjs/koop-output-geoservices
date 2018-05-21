@@ -7,7 +7,7 @@ Geoservices.prototype.featureServer = async function (req, res) {
   if (typeof this.model.validateToken === 'function') {
     try {
       // Does request have a valid authorization token?
-      await this.model.validateToken(req.query.token)
+      await this.model.authorize(req.query.token)
     } catch (err) {
       // Respond with an authorization error
       return FeatureServer.error.authorization(res)
