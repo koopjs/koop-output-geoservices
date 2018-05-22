@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * handling of authorization and authentication errors
 
 ### Fixed
-* Bump FeatureServer version to 2.14.0 in order to support added authentication handling
+* Bump FeatureServer version to 2.14.1 in order to support added authentication handling
 
 ## [1.3.0] - 2018-05-17
 ### Added
