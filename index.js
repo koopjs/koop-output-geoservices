@@ -1,10 +1,10 @@
-var FeatureServer = require('featureserver')
+var FeatureServer = require('../FeatureServer/src')
 
 function Geoservices () {}
 
 Geoservices.prototype.featureServer = async function (req, res) {
   // Is model configured for token-authorization?
-  if (typeof this.model.validateToken === 'function') {
+  if (typeof this.model.authorize === 'function') {
     try {
       // Does request have a valid authorization token?
       await this.model.authorize(req.query.token)
@@ -48,7 +48,9 @@ Geoservices.prototype.generateToken = async function (req, res) {
   if (typeof this.model.authenticate === 'function') {
     try {
       // Does request successfully authenticate?
-      await this.model.authenticate(req, res)
+      let tokenJson = await this.model.authenticate(req.query.username, req.query.password)
+      // Pass on to FeatureServer for request response formatting 
+      FeatureServer.authenticate(res, tokenJson)
     } catch (err) {
       // Respond with an authentication error
       return FeatureServer.error.authentication(res)
