@@ -1,4 +1,4 @@
-var FeatureServer = require('../FeatureServer/src')
+var FeatureServer = require('featureserver')
 
 console.log('WARNING: "/MapServer" routes will be registered, but only for specialized 404 handling in FeatureServer.')
 
