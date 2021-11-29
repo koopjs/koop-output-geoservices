@@ -14,8 +14,20 @@ function Geoservices () {}
 function pullDataAndRoute (model, req, res) {
   model.pull(req, function (error, data) {
     if (error) {
-      const err = normalizeError(error)
-      res.status(err.code || 500).json({ error: err.message })
+	    if (!error.error) {
+        const err = normalizeError(error)
+        if (err.code === 401) FeatureServer.error.authentication(req, res)
+        else res.status(err.code || 500).json({ error: err.message })
+      // if the error is already in the esri REST API format send back with 200 code, e.g.
+      // {
+      //   "error" : {
+      //     "code": 499,
+      //     "message":"Token Required",
+      //     "details":[]
+      //   }
+      // }
+      // This is required for ArcGIS Enterprise apps to handle many errors
+      } else res.status(200).json(error);
     } else FeatureServer.route(req, res, data)
   })
 }
