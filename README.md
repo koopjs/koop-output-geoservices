@@ -1,5 +1,8 @@
 # Koop Geoservices Output Plugin
 
+## DEPRECATED - now migrated to a package in the [Koop monorepo](https://github.com/koopjs/koop/).  Update any `npm` usage to `@koopjs/output-geoservices`.
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 [![npm](https://img.shields.io/npm/v/koop-output-geoservices.svg?style=flat-square)](https://www.npmjs.com/package/koop-output-geoservices)
 [![Greenkeeper badge](https://badges.greenkeeper.io/koopjs/koop-output-geoservices.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/koopjs/koop-output-geoservices.svg?branch=master)](https://travis-ci.org/koopjs/koop-output-geoservices)
