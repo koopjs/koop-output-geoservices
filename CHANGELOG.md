@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.6] - 2023-02-22
+### Changed
+* Bump FeatureServer to 5.0.0
+
 ## [3.1.5] - 2022-06-14
 ### Changed
 * Bump FeatureServer to 4.0.0
