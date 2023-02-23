@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/koopjs/koop-output-geoservices#readme",
   "devDependencies": {
-    "standard": "^14.2.0"
+    "standard": "^17.0.0"
   },
   "dependencies": {
     "@koopjs/logger": "^2.0.6",
